@@ -22,6 +22,10 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
 
+jwt:
+  secret: "finance-project-super-secret-key-2026-this-must-be-long"
+  expiration: 86400000
+
 management:
   endpoints:
     web:
