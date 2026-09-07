@@ -1,0 +1,26 @@
+server:
+  port: 8084
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+    consumer:
+      group-id: notification-service-group
+      auto-offset-reset: earliest
+
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+
+      properties:
+        spring.json.trusted.packages: "com.finance.notificationservice.kafka"
+        spring.json.value.default.type: "com.finance.notificationservice.kafka.TransactionEvent"
+        spring.json.use.type.headers: false
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+   
+  instance:
+    prefer-ip-address: true
